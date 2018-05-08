@@ -13,6 +13,9 @@ function get_mod {
 	mod_url="https://minecraft.curseforge.com/projects/${1}/files/${2}/download"
 	echo "Downloading ${mod_url}..."
 	wget -q --show-progress --trust-server-names "${mod_url}"
+	if [ $? -ne 0 ]; then
+		echo >&2 -e "\033[31;1mDownload error!!!\033[0m"
+	fi
 	cd ..
 }
 
